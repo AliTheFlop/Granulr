@@ -3,19 +3,67 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
+    --font-primary: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+        --font-primary: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-primary);
+}
+
+/* Headers */
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+}
+
+/* Subheaders */
+h2,
+h3 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Body Text */
+p {
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* Metadata */
+.meta {
+    font-weight: 400;
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.a {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+
+    padding: 0.625rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    &.active {
+        background: rgba(0, 0, 0, 0.08);
+        font-weight: 600;
+    }
 }
