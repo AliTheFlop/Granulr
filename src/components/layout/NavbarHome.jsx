@@ -10,10 +10,10 @@ export default function Navbar() {
             <div className="flex flex-row h-16 items-center justify-between max-w-7xl mx-auto px-6">
                 <div className="flex flex-row gap-8">
                     <Link
-                        href="/"
+                        href="/dashboard"
                         className="text-sm font-medium hover:text-indigo-500 transition-colors"
                     >
-                        Projects
+                        How it works
                     </Link>
                     <Link
                         href="/"

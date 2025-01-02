@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Dashboard() {
     const projects = [
         {
@@ -27,9 +29,12 @@ export default function Dashboard() {
                 <h2 className="text-2xl font-semibold bg-gradient-to-r from-indigo-400 to-violet-500 bg-clip-text text-transparent">
                     Your Projects
                 </h2>
-                <button className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg hover:opacity-90 transition-all text-sm">
+                <Link
+                    href="/createproject"
+                    className="px-4 py-2 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-lg hover:opacity-90 transition-all text-sm"
+                >
                     New Project
-                </button>
+                </Link>
             </div>
 
             <div className="bg-white/50 backdrop-blur-sm rounded-xl border border-slate-800/10 overflow-hidden">
