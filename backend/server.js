@@ -61,6 +61,30 @@ app.post("/api/generatetasks", async (req, res) => {
     }
 });
 
+app.get("/tasks/:id", async (req, res) => {
+    const projectId = req.params.id;
+
+    try {
+        const result = await pool.query({
+            text: "SELECT * FROM projects WHERE id = $1",
+            values: [projectId],
+        });
+        const project = result.rows[0];
+
+        const tasks = await pool.query({
+            text: "SELECT * FROM tasks WHERE project_id = $1",
+            values: [projectId],
+        });
+
+        const taskList = tasks.rows;
+
+        res.status(200).json({ project: project, tasks: taskList });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: true, message: err });
+    }
+});
+
 app.listen(PORT, () => {
     console.log("Server running on port ", PORT);
 });
