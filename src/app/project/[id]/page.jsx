@@ -40,37 +40,52 @@ export default function ProjectPage() {
     const date = new Date(project.created_at);
     const formattedDate = date.toLocaleDateString("en-GB");
 
-    console.log(taskList);
-    console.log(project);
-
     // Each task needs a subtask property so might b good to do that. Or send a task &  subtasks (seperate variables)
 
     return (
-        <div>
+        <div className="max-w-5xl mx-auto px-6 py-8">
             {/**Top section */}
-            <div>
-                <div>
-                    <h1>{project.name}</h1>
-                    <p>
-                        Created: <strong>{formattedDate}</strong>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
+                <div className="space-y-2">
+                    <h1 className="text-3xl md:text-4xl font-semibold bg-gradient-to-r from-indigo-400 via-purple-400 to-violet-500 bg-clip-text text-transparent">
+                        {project.name}
+                    </h1>
+                    <p className="text-sm opacity-70">
+                        Created:{" "}
+                        <span className="text-indigo-400">{formattedDate}</span>
                     </p>
                 </div>
-                <div>
-                    <p>Credits left: 5</p>
-                    <button>Export ⬇️</button>
+                <div className="flex items-center gap-6">
+                    <div className="px-4 py-2 bg-white/5 backdrop-blur-sm rounded-lg border border-indigo-500/20">
+                        <p className="text-sm">
+                            Credits left:{" "}
+                            <span className="text-indigo-400 font-semibold">
+                                5
+                            </span>
+                        </p>
+                    </div>
+                    <button className="px-4 py-2 flex items-center gap-2 border border-violet-500/20 rounded-lg hover:bg-violet-500/10 transition-all">
+                        Export
+                        <span className="text-violet-400">⬇️</span>
+                    </button>
                 </div>
             </div>
+
             {/**Tasks section */}
-            <div>
+            <div className="relative flex justify-center w-full">
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-violet-500/5 blur-3xl -z-10" />
+
                 {/**Main tasks */}
-                {taskList.tasks.map((task) => (
-                    <TaskList
-                        key={task.id}
-                        task={task}
-                        subtasks={taskList.subtasks}
-                    />
-                ))}
-                {/**Editor tasks */}
+                <div className="space-y-6">
+                    {taskList.tasks.map((task) => (
+                        <TaskList
+                            key={task.id}
+                            task={task}
+                            subtasks={taskList.subtasks}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
